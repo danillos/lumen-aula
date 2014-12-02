@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-Class Database
+Class FakeTasksDatabase
 {
     private $array =  array();
 
@@ -90,7 +90,7 @@ Class Task
     }
 }
 
-$database = new Database();
+$database = new FakeTasksDatabase();
 
 $task = new Task('Pagar a conta');
 $database->addTask($task);
