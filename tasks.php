@@ -9,7 +9,7 @@ Class FakeTasksDatabase
 
     public function getTasks()
     {
-        for ($i=1; $i <= 5; $i++) { 
+        for ($i=1; $i <= 5; $i++) {
 
             $task = new Task('Tarefa' . $i);
 
@@ -30,7 +30,7 @@ Class FakeTasksDatabase
     }
 }
 
-Class Task 
+Class Task
 {
     private $name;
     private $is_done = false;
@@ -48,7 +48,7 @@ Class Task
         $name = '[' . $this->created_at . '] ' . $this->name;
         return $name;
     }
-    
+
     public function getCreatedAt()
     {
         return $this->created_at;
@@ -108,9 +108,9 @@ $tasks = $database->getTasks();
             <br>
 
             <?php if ($task->getIsDone()): ?>
-                Concluido em: <?= $task->getDoneAt(); ?>    
+                Concluido em: <?= $task->getDoneAt(); ?>
             <?php endif ?>
-            
+
             <br><br>
         </li>
     <?php endforeach ?>
