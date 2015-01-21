@@ -5,33 +5,39 @@ class App
     public function run()
     {
         require APP_PATH . '/App/Configs/routes.php';
+        require APP_PATH . '/App/Configs/database.php';
 
-        $routes = new \Framework\Router($routes, $_SERVER);
+        $router = new Router($routes, $_SERVER);
 
-        if ($routes->exists()) {
+        if ( !$router->exists() ) {
 
-            $route_data = $routes->getRoute();
+             return View::render('404');
 
-            $controller_name = $this->getController($route_data);
-            $action_name = $this->getAction($route_data);
-
-            $controller = new $controller_name();
-            $response = $controller->$action_name();
-
-            View::render($response);
-
-        } else {
-            echo '404';
         }
+
+        $route_data = $router->getRoute();
+
+        $response = $this->dispatchControllerAction($route_data);
+        View::render($response);
     }
 
-    private function getController($data)
+    private function dispatchControllerAction($route_data)
+    {
+        $controller_name = $this->getControllerName($route_data);
+        $action_name = $this->getActionName($route_data);
+
+        $controller = new $controller_name();
+
+        return $controller->$action_name();
+    }
+
+    private function getControllerName($data)
     {
         $controller = explode('@', $data);
         return '\\App\\Controllers\\' . $controller[0];
     }
 
-    private function getAction($data)
+    private function getActionName($data)
     {
         $action = explode('@', $data);
         return $action[1];

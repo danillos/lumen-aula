@@ -13,7 +13,7 @@ class Router
 
     public function exists()
     {
-        return !is_null($this->getRoute());
+        return !is_null( $this->getRoute() );
     }
 
     public function getRoute()

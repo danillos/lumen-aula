@@ -42,15 +42,8 @@ class View
         $html = ob_get_contents();
         ob_end_clean();
 
-        // if ( !isset($shared_params) ) {
-        //     $shared_params = array();
-        // }
-
-        // $shared = compact('shared_params');
-
         if ( !is_null($this->layout) ) {
             $this->params['content'] = $html;
-            // $this->params = array_merge($this->params, $shared);
             $html = View::make($this->layout, $this->params);
             $html = $html->build();
         }

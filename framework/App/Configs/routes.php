@@ -3,7 +3,7 @@
 $routes = array();
 
 $routes['GET']['/'] = 'PagesController@index';
-$routes['POST']['/create'] = 'PagesController@create';
+$routes['POST']['/'] = 'PagesController@create';
 
 $routes['GET']['/about'] = 'PagesController@about';
 $routes['GET']['/contacts'] = 'PagesController@contacts';

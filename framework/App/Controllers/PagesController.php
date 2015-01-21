@@ -7,11 +7,11 @@ class PagesController
 {
     public function index()
     {
-        $todos_model = new Todos();
+        $todos = Todos::all();
 
         $params = array(
             'page_title' => 'Todo App',
-            'todos' => $todos_model->getAll()
+            'todos' => $todos
         );
 
         return View::make('pages/index', $params, 'layouts/default');
@@ -19,10 +19,7 @@ class PagesController
 
     public function create()
     {
-        $todos_model = new Todos();
-        $todos_model->title = $_POST['title'];
-        $todos_model->save();
-        sleep(4);
+        Todos::create($_POST['todos']);
         header('Location: ' . APP_URL);
     }
 

@@ -8,8 +8,9 @@
     <?php endforeach ?>
 </ul>
 
-<form action="<?= APP_URL; ?>/create" method="post">
-    <input type="text" name="title">
+<form action="<?= APP_URL; ?>" method="post">
+    <input type="text" name="todos[title]">
+    <input type="text" name="todos[priority]" value="0">
     <input type="submit">
 </form>
 

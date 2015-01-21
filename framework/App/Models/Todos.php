@@ -1,18 +1,8 @@
 <?php namespace App\Models;
 
-class Todos
+class Todos extends \Illuminate\Database\Eloquent\Model
 {
-    public function getAll()
-    {
-        return array(
-            array('title' => 'Arrumar a cama'),
-            array('title' => 'Escovar os dentes'),
-            array('title' => 'Fazer café da manhã'),
-        );
-    }
-
-    public function save()
-    {
-        echo 'salvar';
-    }
+    protected $table = 'todos';
+    protected $fillable = array('title', 'priority');
+    public $timestamps = false;
 }
